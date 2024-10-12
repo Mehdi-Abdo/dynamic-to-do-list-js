@@ -52,6 +52,41 @@ document.addEventListener('DOMContentLoaded', function() {
     // Invoke addTask function on DOMContentLoaded
 });
 
+// Function to add a new task
+function addTask() {
+    // Retrieve and trim the value from the task input field
+    const taskText = taskInput.value.trim();
+
+    // Check if taskText is not empty
+    if (taskText === "") {
+        alert("Please enter a task.");
+        return;  // Exit the function if no task is entered
+    }
+
+    // Create a new li element for the task
+    const listItem = document.createElement('li');
+    listItem.textContent = taskText;  // Set taskText as the text content of the li
+
+    // Create a remove button for the task
+    const removeButton = document.createElement('button');
+    removeButton.textContent = "Remove";  // Set the button's text to "Remove"
+    removeButton.className = 'remove-btn';  // Give the button a class for styling if needed
+
+    // Assign an onclick event to the remove button that removes the task
+    removeButton.onclick = function() {
+        taskList.removeChild(listItem);  // Remove the li element from the task list
+    };
+
+    // Append the remove button to the li element
+    listItem.appendChild(removeButton);
+
+    // Append the li element to the task list
+    taskList.appendChild(listItem);
+
+    // Clear the task input field
+    taskInput.value = '';  // Reset the input field to an empty string
+}
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
